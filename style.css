@@ -1,0 +1,483 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Header and Navigation */
+header {
+    background: #0651a8;
+    padding: 1rem 0;
+}
+/* Slideshow Container */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Each Slide */
+.mySlides {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Fade animation */
+@keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+}
+
+/* Show active slide */
+.mySlides.active {
+    opacity: 1;
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background: #ff6b6b;
+}
+/* General Nav Style */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    position: relative;
+    display: inline-block;
+}
+
+nav ul .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border-radius: 10px; /* Rounded corners for dropdown */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    min-width: 160px;
+    z-index: 1;
+    padding: 0;
+}
+
+nav ul .dropdown li {
+    display: block;
+    padding: 8px 15px; /* Reduce space between categories */
+}
+
+nav ul .dropdown li a {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    padding: 10px 15px; /* Add padding for each link */
+    border-radius: 10px; /* Rounded corners for links */
+    transition: background-color 0.3s ease;
+}
+
+nav ul .dropdown li a:hover {
+    background-color: #f0f0f0; /* Hover effect */
+}
+
+/* Show dropdown on hover */
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+/* Style for the icon in dropdown */
+nav ul .dropdown li a i {
+    color: #007bff; /* Blue color for the icons */
+}
+
+
+
+.hero {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background: #ff6b6b;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: #ff3b3b;
+}
+
+
+.news-preview, .shop-preview {
+    padding: 2rem 0;
+    background-color: #fff;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-items, .products {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.news-item, .product {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.news-item img, .product img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.news-item:hover, .product:hover {
+    transform: scale(1.05);
+}
+
+.shop-section {
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product {
+    background: #fff;
+    padding: 20px;
+    width: 250px;
+    margin: 10px;
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.product h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.product p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.product button {
+    padding: 10px 20px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.product button:hover {
+    background: #ff3b3b;
+}
+
+
+.cart-section {
+    padding: 2rem;
+    background-color: #fff;
+}
+
+#cart-items {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#cart-items .cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+#cart-items .cart-item h4 {
+    font-size: 1.2rem;
+}
+
+#cart-items .cart-item button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#checkout-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 30px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#checkout-btn:hover {
+    background: #ff3b3b;
+}
+
+
+.news-section, .scores-section {
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.news-item, .scores-item {
+    background: #fff;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.news-item:hover, .scores-item:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    .products, .news-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product, .news-item {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
+    background: #000;
+    color: white;
+    margin-top: 20px;
+}
+.main{
+    width: 100%;
+  }
+  
+  .main-container{
+    width: 85%;
+    margin: 50px auto;
+  }
+  
+  .main .main-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
+  
+  .main-container div{
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  .main-container div h2{
+    color: #3881BA;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .main-container h1{
+    font-size: 60px;
+    margin: 15px 0;
+    color: rgb(31, 31, 31);
+  }
+  .main-container p{
+    font-size: 15px;
+    margin: 15px 0;
+  }
+  
+  .main-container .btn{
+    background: var(--main-color);
+    padding: 15px 25px;
+    margin: 10px 0;
+    display: inline-block;
+    font-size: 15px;
+    color: white ;
+    border-radius: 1px;
+    box-shadow: var(--drop-shadow);
+    transition: 0.2s ease-in-out;
+  }
+  
+  .main-container .btn:hover{
+    background: rgb(214, 214, 214);
+    color: black;
+  }
+  
+  .main-container img{
+    width: 100%;
+    transition: fadeUp 0.5s ease-in-out;
+    animation: fadeUp 0.8s ease;
+  }
+  
+  @media(max-width:900px){
+  
+    .main .main-container{
+      grid-template-columns: 1fr;
+    }
+    .main-container img{
+      order: -1;
+    }}
+
+
+    /* sport */
+    /* Style for the navigation bar */
+.topnav {
+    background-color: #333; /* Dark background color */
+    overflow: hidden; /* Clear floats */
+}
+
+/* Style for navigation links */
+.topnav a {
+    float: left; /* Align links to the left */
+    display: block; /* Make links block elements */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    padding: 14px 16px; /* Padding for links */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Active link style */
+.topnav a.active {
+    background-color: #603ade; /* Green background for active link */
+}
+
+/* Hover effect for links */
+.topnav a:hover {
+    background-color: #ddd; /* Light gray background on hover */
+    color: black; /* Change text color on hover */
+}
+
+/* Responsive layout for small screens */
+@media screen and (max-width: 600px) {
+    .topnav a {
+        float: none; /* Stack links vertically */
+        width: 100%; /* Full width links */
+    }
+}
+
