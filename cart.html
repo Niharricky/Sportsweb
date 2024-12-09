@@ -1,37 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportsZone - Cart</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html" class="logo">SportsZone</a>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="news.html">Sports News</a></li>
-                <li><a href="scores.html">Sports Scores</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Your Cart</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product Name</th>
+          <th>Price (₹)</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Cart items will be dynamically inserted here -->
+      </tbody>
+    </table>
+  </div>
 
-    <section class="cart-section">
-        <h2>Your Cart</h2>
-        <div id="cart-items">
-            <!-- Cart items will be dynamically loaded here -->
-        </div>
-        <button id="checkout-btn">Checkout</button>
-    </section>
+  <!-- JavaScript -->
 
-    <footer>
-        <p>&copy; 2024 SportsZone. All Rights Reserved.</p>
-    </footer>
+  // Change the shoe image and price based on the selected size
+    function changeShoeImage(shoeId, size) {
+      const shoeImage = document.querySelector(`#${shoeId} .main-shoe`);
+      const shoePrice = document.querySelector(`#${shoeId} .shoe-price`);
+      const shoeName = document.querySelector(`#${shoeId} .card-title`);
+      const addToCartBtn = document.querySelector(`#${shoeId} .add-to-cart-btn`);
 
-    <script src="script.js"></script>
+      let imageUrl = '';
+      let price = '3500';
+
+      // Change shoe image and price based on size
+      if (shoeId === 'shoe1') {
+        switch (size) {
+          case 'S':
+            imageUrl = `https://via.placeholder.com/350x250?text=Shoe+1+S`;
+            price = '3500';
+            break;
+          case 'M':
+            imageUrl = `https://via.placeholder.com/350x250?text=Shoe+1+M`;
+            price = '3600';
+            break;
+          case 'L':
+            imageUrl = `https://via.placeholder.com/350x250?text=Shoe+1+L`;
+            price = '3700';
+            break;
+          case '7':
+          case '8':
+          case '9':
+          case '10':
+            imageUrl = `https://via.placeholder.com/350x250?text=Shoe+1+${size}`;
+            price = '3500';
+            break;
+        }
+      }
+
+      // Update shoe image, price, and button visibility
+      shoeImage.src = imageUrl;
+      shoePrice.textContent = `₹${price}`;
+      shoePrice.style.display = 'block';
+      addToCartBtn.style.display = 'block';
+    }
+
+    // Add selected item to the cart
+    function addToCart(name, price, size, imageUrl) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Check if the product is already in the cart
+      const product = { name, price, size, imageUrl };
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`${name} (Size: ${size}) added to cart at ₹${price}`);
+      
+      // Redirect to cart page
+      window.location.href = "cart.html";
+    }
+
+  <script>
+    // Load Cart Data
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cart-items');
+
+    // Check if cart is empty and display a message if so
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<tr><td colspan="3" class="text-center">Your cart is empty.</td></tr>';
+    } else {
+      // Loop through cart items and create table rows dynamically
+      cart.forEach((item, index) => {
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${item.name}</td>
+            <td>${item.price}</td>
+          </tr>
+        `;
+        cartItemsContainer.innerHTML += row;
+      });
+    }
+  </script>
 </body>
 </html>

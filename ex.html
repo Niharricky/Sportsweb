@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Jersey Collection</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    .shoe-card {
+      border: 1px solid blue;
+      border-radius: 10px;
+      padding: 10px;
+      transition: transform 0.2s ease-in-out;
+      margin-bottom: 20px;
+    }
+    .shoe-card:hover {
+      transform: scale(1.05);
+    }
+    .shoe-details {
+      display: flex;
+      justify-content: space-between;
+    }
+    .shoe-details img {
+      max-width: 300px;
+      margin-right: 20px;
+    }
+    .shoe-filters {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding-top: 20px;
+    }
+    .category-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+    .shoe-detail-section h4 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+    }
+    .shoe-detail-section p {
+      font-size: 16px;
+    }
+    .load-more-btn {
+      margin-top: 20px;
+    }
+    .cart-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .cart-btn:hover {
+      background-color: #218838;
+    }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding-top: 20px;
+      border-right: 2px solid #ddd;
+    }
+    .sidebar h5 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .shoe-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Sports Jersey</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="Jersey.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"></a></li>
+        </ul>
+        <!-- Search Form -->
+        <form class="d-flex ms-3">
+          form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Filters and Jersey Grid -->
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Sidebar with Categories and Filters -->
+      <div class="col-md-3 sidebar">
+        <h5>Categories</h5>
+        <ul class="list-group">
+          <li class="list-group-item" onclick="filterCategory('football')">Football</li>
+          <li class="list-group-item" onclick="filterCategory('basketball')">Basketball</li>
+          <li class="list-group-item" onclick="filterCategory('Cricket')">Cricket</li>
+          <li class="list-group-item" onclick="filterCategory('baseball')">Baseball</li>
+          <li class="list-group-item" onclick="filterCategory('hockey')">Hockey</li>
+          <li class="list-group-item" onclick="filterCategory('tennis')">Tennis</li>
+          <li class="list-group-item" onclick="filterCategory('boxing')">Boxing</li>
+          <li class="list-group-item" onclick="filterCategory('cycling')">NFL</li>
+          <li class="list-group-item" onclick="filterCategory('golf')">Golf</li>
+
+          <li class="list-group-item" onclick="filterCategory('volleyball')">Volleyball</li>
+<li class="list-group-item" onclick="filterCategory('rugby')">Rugby</li>
+
+         
+          
+            
+          
+        <h5 class="mt-4">Filters</h5>
+        <form>
+          <h6>Size</h6>
+          <select class="form-select mb-3" id="size-filter">
+            <option selected>All Sizes</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="Freesize">Freesize</option>
+          </select>
+
+          <!-- <h6>Color</h6>
+          <select class="form-select mb-3" id="color-filter">
+            <option selected>All Colors</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="black">Black</option>
+          </select>
+        </form>
+      </div> -->
+
+      <!-- Jersey Grid -->
+      <div class="col-md-9">
+        <h2 class="text-center mb-4" id="category-title">Sports Jersey Collection</h2>
+
+        <!-- Jersey Categories -->
+        <div id="shoe-category" class="row">
+          <!-- Dynamic Category Content Will Appear Here -->
+        </div>
+
+        <!-- Cart Button (Will Show Cart items) -->
+        <div class="text-center">
+          <button class="btn btn-warning" id="cart-btn" onclick="viewCart()">View Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <!-- <footer class="bg-dark text-white py-5">
+    <div class="container text-center">
+      <p>&copy; 2024 Sports Gear Inc. All Rights Reserved.</p>
+    </div>
+  </footer> -->
+
+
+
+
+
+  
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Sample Shoe Data for 20 Categories
+    const JerseyData = {
+      football: [
+        { name: 'Nike Football Jersey', img: 'https://via.placeholder.com/200x200?text=Football1', price: '₹12000', color: 'Red', size: '8', brand: 'Nike' },
+        { name: 'Adidas Football Jersey', img: 'https://via.placeholder.com/200x200?text=Football2', price: '₹11000', color: 'Blue', size: '9', brand: 'Adidas' },
+        { name: 'Puma Football Jersey', img: 'https://via.placeholder.com/200x200?text=Football3', price: '₹11500', color: 'Black', size: '10', brand: 'Puma' },
+        { name: 'Reebok Football Jersey', img: 'https://via.placeholder.com/200x200?text=Football4', price: '₹12500', color: 'Yellow', size: '9', brand: 'Reebok' },
+        { name: 'Under Armour Football Jersey', img: 'https://via.placeholder.com/200x200?text=Football5', price: '₹13500', color: 'Green', size: '10', brand: 'Under Armour' },
+      ],
+      
+      basketball: [
+        { name: 'Nike Basketball Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball1', price: '₹14000', color: 'Black', size: '10', brand: 'Nike' },
+        { name: 'Adidas Basketball Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball2', price: '₹12500', color: 'Red', size: '8', brand: 'Adidas' },
+        { name: 'Puma Basketball Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball3', price: '₹13000', color: 'Blue', size: '11', brand: 'Puma' },
+        { name: 'Reebok Basketball Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball4', price: '₹13500', color: 'Yellow', size: '9', brand: 'Reebok' },
+        { name: 'Under Armour Basketball Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball5', price: '₹14500', color: 'Red', size: '10', brand: 'Under Armour' },
+      ],
+
+      
+
+      Baseball: [
+        { name: 'Nike Baseball Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball1', price: '₹13000', color: 'Black', size: '10', brand: 'Nike' },
+        { name: 'Adidas Baseball Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball2', price: '₹12500', color: 'Red', size: '9', brand: 'Adidas' },
+        { name: 'Under Armour Baseball Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball3', price: '₹14000', color: 'Blue', size: '11', brand: 'Under Armour' },
+        // Add more products as needed...
+      ],
+
+      Hockey: [
+        { name: 'Nike Hockey Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball1', price: '₹13000', color: 'Black', size: '10', brand: 'Nike' },
+        { name: 'Adidas Hockey Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball2', price: '₹12500', color: 'Red', size: '9', brand: 'Adidas' },
+        { name: 'Under Armour Hockey Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball3', price: '₹14000', color: 'Blue', size: '11', brand: 'Under Armour' },
+        // Add more products as needed...
+      ],
+      
+      Tennis: [
+        { name: 'Nike Tennis Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball1', price: '₹13000', color: 'Black', size: '10', brand: 'Nike' },
+        { name: 'Adidas Tennis Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball2', price: '₹12500', color: 'Red', size: '9', brand: 'Adidas' },
+        { name: 'Under Armour Tennis Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball3', price: '₹14000', color: 'Blue', size: '11', brand: 'Under Armour' },
+        // Add more products as needed...
+      ],
+      Cycling: [
+        { name: 'Nike Cycling Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball1', price: '₹13000', color: 'Black', size: '10', brand: 'Nike' },
+        { name: 'Adidas Cycling Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball2', price: '₹12500', color: 'Red', size: '9', brand: 'Adidas' },
+        { name: 'Under Armour Cycling Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball3', price: '₹14000', color: 'Blue', size: '11', brand: 'Under Armour' },
+        // Add more products as needed...
+      ],
+    Rugby: [
+        { name: 'Nike Rugby Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball1', price: '₹13000', color: 'Black', size: '10', brand: 'Nike' },
+        { name: 'Adidas Rugby Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball2', price: '₹12500', color: 'Red', size: '9', brand: 'Adidas' },
+        { name: 'Under Armour Rugby Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball3', price: '₹14000', color: 'Blue', size: '11', brand: 'Under Armour' },
+        // Add more products as needed...
+      ],
+      
+      Cricket: [
+        { name: 'Nike Cricket Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball1', price: '₹13000', color: 'Black', size: '10', brand: 'Nike' },
+        { name: 'Adidas Cricket Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball2', price: '₹12500', color: 'Red', size: '9', brand: 'Adidas' },
+        { name: 'Under Armour Cricket Jersey', img: 'https://via.placeholder.com/200x200?text=Basketball3', price: '₹14000', color: 'Blue', size: '11', brand: 'Under Armour' },
+        // Add more products as needed...
+      ],
+
+      // Add remaining categories similarly
+    };
+
+    // Function to Filter Jersey by Category
+    function filterCategory(category) {
+      const JerseyCategory = JerseyData[category];
+      const categoryTitle = document.getElementById('category-title');
+      categoryTitle.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} Jersey`;
+
+      const shoeCategoryDiv = document.getElementById('shoe-category');
+      shoeCategoryDiv.innerHTML = ''; // Clear previous Jersey
+
+      JerseyCategory.forEach(shoe => {
+        shoeCategoryDiv.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="shoe-card">
+              <img src="${shoe.img}" class="img-fluid" alt="${shoe.name}">
+              <h5>${shoe.name}</h5>
+              <p>Price: ${shoe.price}</p>
+              <button class="btn btn-success cart-btn" onclick="addToCart('${shoe.name}')">Add to Cart</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Function to Add Items to Cart
+    function addToCart(shoeName) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(shoeName);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${shoeName} added to cart!`);
+    }
+
+    // View Cart
+    function viewCart() {
+      window.location.href = 'cart.html'; // Link to cart.html page
+    }
+
+
+    
+          // Function to add Jersey to cart
+          function addToCart(shoeName) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(shoeName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${shoeName} added to cart!`);
+          }
+  </script>
+</body>
+</html>

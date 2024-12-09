@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Shoes Collection</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    .shoe-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      transition: transform 0.2s ease-in-out;
+      margin-bottom: 20px;
+    }
+    .shoe-card:hover {
+      transform: scale(1.05);
+    }
+    .shoe-details {
+      display: flex;
+      justify-content: space-between;
+    }
+    .shoe-details img {
+      max-width: 300px;
+      margin-right: 20px;
+    }
+    .shoe-filters {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding-top: 20px;
+    }
+    .category-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+    .shoe-detail-section h4 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+    }
+    .shoe-detail-section p {
+      font-size: 16px;
+    }
+    .load-more-btn {
+      margin-top: 20px;
+    }
+    .cart-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .cart-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Sports Shoes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#" onclick="filterCategory('all')">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="filterCategory('football')">Football</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="filterCategory('basketball')">Basketball</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="filterCategory('running')">Running</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+        <!-- Search Form -->
+        <form class="d-flex ms-3">
+          <input class="form-control me-2" type="search" placeholder="Search for shoes..." aria-label="Search">
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Filters and Shoes Grid -->
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Filters -->
+      <div class="col-md-3 shoe-filters">
+        <h5>Filters</h5>
+        <form>
+          <h6>Size</h6>
+          <select class="form-select mb-3" id="size-filter">
+            <option selected>All Sizes</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+
+          <h6>Color</h6>
+          <select class="form-select mb-3" id="color-filter">
+            <option selected>All Colors</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="black">Black</option>
+          </select>
+        </form>
+      </div>
+
+      <!-- Shoes Grid -->
+      <div class="col-md-9">
+        <h2 class="text-center mb-4">Sports Shoes Collection</h2>
+
+        <!-- Shoes Categories -->
+        <div id="shoe-category">
+          <!-- Dynamic Category Content Will Appear Here -->
+        </div>
+
+        <!-- Cart Button (Will Show Cart items) -->
+        <div class="text-center">
+          <button class="btn btn-warning" id="cart-btn" onclick="viewCart()">View Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-5">
+    <div class="container text-center">
+      <p>&copy; 2024 Sports Gear Inc. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Sample Shoe Data
+    const shoesData = {
+      football: [
+        { name: 'Nike Football Shoes', img: 'https://via.placeholder.com/200x200?text=Football1', price: '$120', color: 'Red', size: '8', brand: 'Nike' },
+        { name: 'Adidas Football Shoes', img: 'https://via.placeholder.com/200x200?text=Football2', price: '$110', color: 'Blue', size: '9', brand: 'Adidas' },
+      ],
+      basketball: [
+        { name: 'Nike Basketball Shoes', img: 'https://via.placeholder.com/200x200?text=Basketball1', price: '$130', color: 'Black', size: '10', brand: 'Nike' },
+        { name: 'Puma Basketball Shoes', img: 'https://via.placeholder.com/200x200?text=Basketball2', price: '$140', color: 'Blue', size: '11', brand: 'Puma' },
+      ],
+      running: [
+        { name: 'Asics Running Shoes', img: 'https://via.placeholder.com/200x200?text=Running1', price: '$100', color: 'Red', size: '8', brand: 'Asics' },
+        { name: 'Brooks Running Shoes', img: 'https://via.placeholder.com/200x200?text=Running2', price: '$120', color: 'Green', size: '9', brand: 'Brooks' },
+      ],
+    };
+
+    // Cart Array
+    let cart = [];
+
+    // Function to Filter and Display Shoes
+    function filterCategory(category) {
+      let shoes = [];
+      if (category === 'all') {
+        shoes = [...shoesData.football, ...shoesData.basketball, ...shoesData.running];
+      } else {
+        shoes = shoesData[category];
+      }
+
+      displayShoes(shoes);
+    }
+
+    // Function to Display Shoes
+    function displayShoes(shoes) {
+      let html = '';
+      shoes.forEach(shoe => {
+        html += `
+          <div class="col-md-4">
+            <div class="card shoe-card" onclick="showShoeDetail('${shoe.name}')">
+              <img src="${shoe.img}" class="card-img-top" alt="${shoe.name}">
+              <div class="card-body">
+                <h5 class="card-title">${shoe.name}</h5>
+                <p class="card-text">Price: ${shoe.price}</p>
+                <button class="btn cart-btn" onclick="addToCart('${shoe.name}', event)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      document.getElementById('shoe-category').innerHTML = html;
+    }
+
+    // Function to Add Shoe to Cart
+    function addToCart(shoeName, event) {
+      event.stopPropagation(); // Prevent triggering showShoeDetail
+      cart.push(shoeName);
+      alert(`${shoeName} added to cart`);
+    }
+
+    // Function to View Cart
+    function viewCart() {
+      if (cart.length > 0) {
+        alert('Your Cart: ' + cart.join(', '));
+      } else {
+        alert('Your Cart is Empty');
+      }
+    }
+
+    // Function to Show Shoe Details
+    function showShoeDetail(shoeName) {
+      const shoe = findShoe(shoeName);
+      const html = `
+        <div class="shoe-detail-section">
+          <div class="shoe-details">
+            <img src="${shoe.img}" alt="${shoe.name}">
+            <div>
+              <h4>${shoe.name}</h4>
+              <p>Brand: ${shoe.brand}</p>
+              <p>Price: ${shoe.price}</p>
+              <p>Color: ${shoe.color}</p>
+              <p>Size: ${shoe.size}</p>
+              <button class="btn btn-success" onclick="addToCart('${shoe.name}')">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('shoe-category').innerHTML = html;
+    }
+
+    // Function to Find Shoe by Name
+    function findShoe(shoeName) {
+      for (const category in shoesData) {
+        const shoe = shoesData[category].find(s => s.name === shoeName);
+        if (shoe) {
+          return shoe;
+        }
+      }
+    }
+
+    // Load Default Shoes (All)
+    filterCategory('all');
+  </script>
+</body>
+</html>

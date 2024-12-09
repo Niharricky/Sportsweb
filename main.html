@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Shoes Collection</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    .shoe-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      transition: transform 0.2s ease-in-out;
+    }
+    .shoe-card:hover {
+      transform: scale(1.05);
+    }
+    .shoe-details {
+      display: flex;
+      justify-content: space-between;
+    }
+    .shoe-details img {
+      max-width: 300px;
+      margin-right: 20px;
+    }
+    .shoe-filters {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding-top: 20px;
+    }
+    .category-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+    .shoe-detail-section h4 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+    }
+    .shoe-detail-section p {
+      font-size: 16px;
+    }
+    .load-more-btn {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Sports Shoes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
+        </ul>
+        <!-- Search Form -->
+        <form class="d-flex ms-3">
+          <input class="form-control me-2" type="search" placeholder="Search for shoes..." aria-label="Search">
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Categories and Filters -->
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Filters -->
+      <div class="col-md-3 shoe-filters">
+        <h5>Filters</h5>
+        <form>
+          <h6>Size</h6>
+          <select class="form-select mb-3">
+            <option selected>All Sizes</option>
+            <option value="1">6</option>
+            <option value="2">7</option>
+            <option value="3">8</option>
+            <option value="4">9</option>
+            <option value="5">10</option>
+            <option value="6">11</option>
+            <option value="7">12</option>
+          </select>
+
+          <h6>Color</h6>
+          <select class="form-select mb-3">
+            <option selected>All Colors</option>
+            <option value="1">Red</option>
+            <option value="2">Blue</option>
+            <option value="3">Black</option>
+            <option value="4">White</option>
+            <option value="5">Green</option>
+          </select>
+
+          <h6>Sport</h6>
+          <select class="form-select mb-3">
+            <option selected>All Sports</option>
+            <option value="1">Football</option>
+            <option value="2">Basketball</option>
+            <option value="3">Running</option>
+            <option value="4">Tennis</option>
+            <option value="5">Hiking</option>
+          </select>
+        </form>
+      </div>
+
+      <!-- Shoes Grid -->
+      <div class="col-md-9">
+        <h2 class="text-center mb-4">Sports Shoes Collection</h2>
+        
+        <!-- Football Shoes Category -->
+        <div id="football-shoes" class="category-title">Football Shoes</div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- Shoe Card Example (Repeat for 50 items) -->
+          <div class="col">
+            <div class="card shoe-card">
+              <img src="https://via.placeholder.com/200x200?text=Shoe+1" class="card-img-top" alt="Shoe 1">
+              <div class="card-body">
+                <h5 class="card-title">Nike Football Shoes</h5>
+                <p class="card-text">Size: 8 | Color: Red | Brand: Nike</p>
+                <button class="btn btn-primary" onclick="window.location.href='#shoe-details'">View Details</button>
+              </div>
+            </div>
+          </div>
+          <!-- Repeat above card for 50 total cards, here is just a sample with one card -->
+
+        </div>
+        
+        <!-- Load More Button -->
+        <div class="text-center">
+          <button class="btn btn-primary load-more-btn" onclick="loadMoreFootballShoes()">Load 50 More Shoes</button>
+        </div>
+        
+        <!-- Basketball Shoes Category (Repeat for 50 items) -->
+        <div id="basketball-shoes" class="category-title mt-5">Basketball Shoes</div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- Shoe Card Example (Repeat for 50 items) -->
+          <div class="col">
+            <div class="card shoe-card">
+              <img src="https://via.placeholder.com/200x200?text=Shoe+2" class="card-img-top" alt="Shoe 2">
+              <div class="card-body">
+                <h5 class="card-title">Adidas Basketball Shoes</h5>
+                <p class="card-text">Size: 9 | Color: Blue | Brand: Adidas</p>
+                <button class="btn btn-primary" onclick="window.location.href='#shoe-details'">View Details</button>
+              </div>
+            </div>
+          </div>
+          <!-- Repeat above card for 50 total cards, here is just a sample with one card -->
+        </div>
+        
+        <!-- Load More Button -->
+        <div class="text-center">
+          <button class="btn btn-primary load-more-btn" onclick="loadMoreBasketballShoes()">Load 50 More Shoes</button>
+        </div>
+        
+        <!-- More categories can be added here similarly -->
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Shoe Details Section -->
+  <div id="shoe-details" class="container mt-5">
+    <div class="shoe-detail-section">
+      <h4>Nike Football Shoes</h4>
+      <div class="shoe-details">
+        <img src="https://via.placeholder.com/300x300?text=Detail+Shoe" alt="Shoe Detail">
+        <div class="details">
+          <p><strong>Brand:</strong> Nike</p>
+          <p><strong>Size:</strong> 8, 9, 10</p>
+          <p><strong>Color:</strong> Red</p>
+          <p><strong>Description:</strong> These high-performance football shoes are designed to give you the best traction on the field. Lightweight and durable, they are perfect for any game.</p>
+          <p><strong>Price:</strong> $120.00</p>
+          <button class="btn btn-success">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-5">
+    <div class="container text-center">
+      <p>&copy; 2024 Sports Gear Inc. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    function loadMoreFootballShoes() {
+      alert('Loading 50 more Football Shoes...');
+      // Here, you can fetch data dynamically and append 50 more shoe cards
+    }
+    
+    function loadMoreBasketballShoes() {
+      alert('Loading 50 more Basketball Shoes...');
+      // Similarly, handle loading 50 more basketball shoes
+    }
+  </script>
+</body>
+</html>

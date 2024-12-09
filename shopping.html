@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports E-Commerce Product</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container my-5">
+    <!-- Product Card -->
+    <div class="card shadow">
+      <div class="row g-0">
+        <!-- Product Image -->
+        <div class="col-md-6">
+          <img src="/assets/images/1.jfif" width="70%"     class="img-fluid rounded-start" alt="Product Image">
+        </div>
+        <!-- Product Details -->
+        <div class="col-md-6">
+          <div class="card-body">
+            <h5 class="card-title">Sports Shoe</h5>
+            <p class="card-text">Premium quality sports shoe, designed for comfort and performance.</p>
+            <h6 class="text-primary"></h6>
+
+            <!-- Size Selection -->
+            <h6>Select Size:</h6>
+            <div class="btn-group" role="group" aria-label="Size Selection">
+              <input type="radio" class="btn-check" id="size-sm" name="size" autocomplete="off">
+              <label class="btn btn-outline-primary" for="size-sm">S</label>
+
+              <input type="radio" class="btn-check" id="size-md" name="size" autocomplete="off">
+              <label class="btn btn-outline-primary" for="size-md">M</label>
+
+              <input type="radio" class="btn-check" id="size-lg" name="size" autocomplete="off">
+              <label class="btn btn-outline-primary" for="size-lg">L</label>
+
+              <input type="radio" class="btn-check" id="size-xl" name="size" autocomplete="off">
+              <label class="btn btn-outline-primary" for="size-xl">XL</label>
+            </div>
+
+            <!-- Color Selection -->
+            <h6 class="mt-3">Select Color:</h6>
+            <div class="d-flex">
+              <button class="btn btn-outline-dark rounded-circle me-2" style="width: 30px; height: 30px; background-color: black;"></button>
+              <button class="btn btn-outline-dark rounded-circle me-2" style="width: 30px; height: 30px; background-color: red;"></button>
+              <button class="btn btn-outline-dark rounded-circle me-2" style="width: 30px; height: 30px; background-color: blue;"></button>
+            </div>
+
+            <!-- Filter Section -->
+            <h6 class="mt-4">Filter By:</h6>
+            <select class="form-select">
+              <option value="default" selected>Choose Filter</option>
+              <option value="price">Price</option>
+              <option value="brand">Brand</option>
+              <option value="rating">Rating</option>
+            </select>
+
+            <!-- Add to Cart Button -->
+            <div class="mt-4">
+              <button class="btn btn-primary btn-lg w-100">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Central</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://www.flaticon.com/free-icons/add-to-cart" title="add to cart icons">
+
+  <style>
+    /* Custom navbar styling */
+    .navbar-custom {
+      padding: 1rem 2rem;
+    }
+
+    .navbar-custom .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar-custom .nav-link {
+      font-size: 1rem;
+      padding: 0 15px;
+      font-weight: 500;
+    }
+
+    .navbar-custom .search-box {
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 5px 15px;
+    }
+
+    .navbar-custom .icon-btn {
+      font-size: 1.2rem;
+      margin-left: 15px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .navbar-custom .icon-btn:hover {
+      color: #007bff;
+    }
+
+        /* Optional styling for the carousel */
+        .carousel-inner img {
+      height: 500px;
+      object-fit: cover;
+    }
+
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+        /* Video Section */
+        .video-section {
+      text-align: center;
+      padding: 3rem 0;
+      background-color: #f8f9fa;
+      
+    }
+
+    .video-section video {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+/* Mega dropdown */
+.dropdown-menu.mega-menu {
+      width: 100%;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      border-top: 3px solid #007bff;
+    }
+
+    .menu-category {
+      margin-bottom: 15px;
+    }
+
+    .menu-category h6 {
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .menu-category ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .menu-category ul li {
+      margin-bottom: 5px;
+    }
+
+    .menu-category ul li a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .menu-category ul li a:hover {
+      color: #007bff;
+    }
+
+    .btn-cart {
+      background-color: wheat; /* Green color for the cart */
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      text-transform: uppercase;
+    }
+
+    .btn-cart i {
+      margin-right: 8px; /* Space between icon and text */
+    }
+
+    .btn-cart:hover {
+      background-color: #218838; /* Darker green on hover */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
+
+
+    .phrase{
+      font-size: 40px;
+      font-weight: 200px;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      align-items: center;
+      background-color: whitesmoke;
+      align-self: center;
+      place-items: center;
+    }
+
+    
+   .p2{
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-items: center;
+  }
+
+  .polo{
+    place-items: center;
+  }
+
+s
+
+
+.jersey-card {
+      background: linear-gradient(to bottom, #5e17eb, #310867);
+      border-radius: 20px;
+      text-align: center;
+      padding: 15px;
+      margin: 10px;
+    }
+
+    .jersey-card img {
+      border-radius: 10px;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .jersey-card h6 {
+      margin-top: 10px;
+      color: white;
+    }
+
+    .hawahawa {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  place-items: right;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(45deg, #ff6b6b, #fbc531);
+  border: none;
+  border-radius: 500%;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hawahawa:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  width: 15px;
+  height: 10px;
+}
+
+
+
+/* .jersey-card {
+      background: linear-gradient(to bottom, #5e17eb, #310867);
+      border-radius: 20px;
+      text-align: center;
+      padding: 15px;
+      margin: 10px;
+    }
+
+    .jersey-card img {
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .jersey-card h6 {
+      margin-top: 10px;
+      color: white;
+    }
+
+ */
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <h3>Sports Central</h3>
+      <!-- Toggler for mobile view -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links and Actions -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <!-- Center Links -->
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="resp.html">New & Featured</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Jersey.html">Jersey</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="more.html">Gear</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Footwear</a>
+          <li class="nav-link">
+
+            
+                
+    
+  </nav>
+  <hr>
+    <!-- Right-side Actions -->
+    <!-- <form class="d-flex me-3">
+      <input class="form-control me-2 search-box" type="search" placeholder="Search" aria-label="Search">
+       -->
+    </form>
+    <div class="person"></div>
+      <h5>
+      <i class="bi bi-person-circle" title="Login"></i>
+      <a href="logi.html"></a>
+      <i class="bi bi-cart icon-btn" title="Cart"></i>
+      <a href="cart.html"></a>
+      </h5>
+    </div>
+  </div>
+</div>
+<hr>
+
+
+
+
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/assets/images/hero-banner.png" class="d-block w-100" alt="First Slide">
+        <div class="carousel-caption d-none d-md-block">
+           </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/images/All-Jerseys-Page-cover.webp" class="d-block w-100" alt="Second Slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5></h5>
+          <p>Latest Jerseys Available</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/images/cover gear.webp" class="d-block w-100" alt="Third Slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5></h5>
+          <p>Every kind of gear available.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+  
+
+  <div class="container my-5">
+    <!-- Section for Products -->
+    <h2 class="text-center mb-4">Get Latest</h2>
+    <div class="row g-3">
+        <!-- Card 1 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="/assets/images/girl.webp" class="card-img-top" alt="Gifts for Fitness">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Gifts for Fitness</h5>
+                    <a href="#" class="btn btn-primary">Shop</a>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="/assets/images/men.webp" class="card-img-top" alt= height="25px">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Top of the Wishlist Kicks</h5>
+                    <a href="#" class="btn btn-primary">Shop</a>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="/assets/images/kudos.jpg" class="card-img-top" alt= height 20px>
+                <div class="card-body text-center">
+                    <h5 class="card-title">Gifts for Kids</h5>
+                    <a href="#" class="btn btn-primary">Shop</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+
+<div class="phrase">
+<p><b><h1>FOR THE HOME TEAM</h1></b></p>
+<div class="p2">
+<P>Be Fearless in Bold New prints of the season</P>
+<div class="polo">
+<button>Shop Now</button>
+</div>
+</div>
+<hr>
+</div>
+<hr>
+
+
+
+
+<section class="container my-5">
+  <h2 class="text-center mb-4">Auction - Just In</h2>
+  <div id="jerseyCarousel" class="carousel slide" data-bs-ride="carousel">
+    <!-- Carousel Items -->
+    <div class="carousel-inner">
+      <!-- Carousel Slide 1 -->
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center flex-wrap">
+          <!-- Jersey Cards -->
+          <div class="jersey-card mx-2">
+            <img src="/assets/images/KKR3.webp" alt="KKR Jersey" class="img-fluid">
+            <h6>KKR</h6>
+          </div>
+          <div class="jersey-card mx-2">
+            <img src="/assets/images/SRH2.webp" alt="SRH Jersey" class="img-fluid">
+            <h6>SRH</h6>
+          </div>
+          <div class="jersey-card mx-2">
+            <img src="/assets/images/GT2.webp" alt="GT Jersey" class="img-fluid">
+            <h6>GT</h6>
+          </div>
+          <div class="jersey-card mx-2">
+            <img src="/assets/images/MI2 (1).webp" alt="MI Jersey" class="img-fluid">
+            <h6>MI</h6>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel Slide 2 -->
+      <div class="carousel-item">
+        <div class="d-flex justify-content-center flex-wrap">
+          <!-- Jersey Cards -->
+          <div class="jersey-card mx-2">
+            <img src="/assets/images/RR2.webp" alt="RR Jersey" class="img-fluid">
+            <h6>RR</h6>
+          </div>
+          <div class="jersey-card mx-2">
+            <img src="/assets/images/newrcb.jpeg" alt="RCB Jersey" class="img-fluid">
+            <h6>RCB</h6>
+          </div>
+          <div class="jersey-card mx-2">
+            <img src="/assets/images/csk.webp" alt="CSK Jersey" class="img-fluid">
+            <h6>CSK</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#jerseyCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#jerseyCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+
+
+<hr>
+<footer class="bg-dark text-white py-5">
+  
+      <!-- Newsletter Section -->
+      <div class="col-md-6 text-end">
+        <h5 class="text-uppercase">Subscribe to Our Newsletter</h5>
+        <p>Get the latest updates and exclusive offers directly in your inbox.</p>
+        <form class="input-group">
+          <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email">
+          <button class="btn btn-primary" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <p>For any queries mail us at jkamra34@gmail.com</p>
+    
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap CSS and Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+</body>
+
+</html>
