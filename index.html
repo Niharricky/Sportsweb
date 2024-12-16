@@ -35,7 +35,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
   <!-- 
     - preload banner
   -->
@@ -44,116 +45,56 @@
 <style>
 
 
-
-    /* Tooltip styling */
-    .card-action-tooltip {
-      display: none;
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #333;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
-    /* Show tooltip on hover */
-    .quick-view-btn:hover .card-action-tooltip {
-      display: block;
-    }
-
-  /* auto add to cart  */
 .product-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  text-align: center;
-}
-
-.product-card img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.cart {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 16px;
-}
- /* Shoe Card Styling */
- .shoe-card {
-      position: relative;
-      overflow: hidden;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
       text-align: center;
+      margin-bottom: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    .shoe-card img.main-shoe {
+    .product-card img {
       width: 100%;
-      height: auto;
-      transition: all 0.3s ease;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
-    /* Hover size options */
-    .size-options {
-      display: flex;
+    .color-options {
+      display: flex; /* Aligns color options horizontally */
       justify-content: center;
-      gap: 10px;
       margin-top: 10px;
     }
 
-    .size-option {
-      width: 60px;
-      height: 60px;
-      border-radius: 5px;
+    .color-options img {
+      width: 50px;
+      height: 50px;
       cursor: pointer;
-      border: 2px solid #ddd;
-      transition: all 0.3s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
     }
 
-    .size-option img {
-      max-width: 80%;
-      max-height: 80%;
-      transition: transform 0.3s ease;
+    .color-options img:hover {
+      border: 2px solid #000;
     }
 
-    .size-option:hover img {
-      transform: scale(1.1);
-    }
-
-    /* Show price when hovering size option */
-    .shoe-price {
-      font-size: 1.2rem;
-      color: #333;
+    .product-card .btn {
       margin-top: 10px;
-      display: none;
     }
 
-    .size-option.selected + .shoe-price {
-      display: block;
+    .navbar .btn {
+      font-size: 14px;
+      padding: 5px 10px;
     }
 
-    .size-option:hover {
-      border-color: #333;
+    .navbar .nav-link {
+      font-size: 2rem; /* Makes the text larger */
+      padding: 10px 15px; /* Adjusts padding for a bigger button feel */
     }
-
-    .add-to-cart-btn {
-      margin-top: 20px;
-      display: none;
-    
-
+   
 </style>
 
 
@@ -176,69 +117,29 @@
   <!-- 
     - #HEADER
   -->
-
-  <header class="header" data-header>
-    <div class="container">
-  
-      <div class="overlay" data-overlay></div>
-  
-      <a href="#" class="logo">
-        <img src="" width="160" height="50" alt="logo">
-      </a>
-  
-      <button class="nav-open-btn btn btn-outline-primary d-lg-none" data-nav-open-btn aria-label="Open Menu">
-        <ion-icon name="menu-outline"></ion-icon>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="nav-link" href="resp.html">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-  
-      <nav class="navbar navbar-expand-lg" data-navbar>
-        <button class="nav-close-btn btn btn-outline-danger d-lg-none" data-nav-close-btn aria-label="Close Menu">
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-  
-        <!-- <a href="#" class="navbar-brand">
-          <img src="./assets/images/logo.svg" width="190" height="50" alt="logo">
-        </a> -->
-  
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-  
-            <li class="nav-item">
-              <a href="#" class="nav-link">Home</a>
-            </li>
-  
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Categories
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="index.html"><i class="icon-shoes"></i> Shoes</a></li>
-                <li><a class="dropdown-item" href="Jersey.html"><i class="icon-jersey"></i> Jersey</a></li>
-                <li><a class="dropdown-item" href="gear.html"><i class="icon-more"></i> More</a></li>
-              </ul>
-            </li>
-  
-            <li class="nav-item">
-              <a href="#" class="nav-link">Shop</a>
-            </li>
-  
-            <li class="nav-item">
-              <a href="cart.html" class="nav-link">Cart</a>
-            </li>
-  
-          </ul>
-  
-          <form class="d-flex me-3">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-            <a href="/search.html"></a>
-          </form>
-  
-          <a href="/assets/js/login.html" class="btn btn-primary">Login</a>
-  </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="Jersey.html">Jerseys</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gear.html">Gear</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+          <a href="cart.html" class="btn btn-primary me-2">Cart</a>
+          <a href="login.html" class="btn btn-secondary">Login</a>
         </div>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
+
   
 
 
@@ -289,7 +190,7 @@
               <div class="collection-card" style="background-image: url('./assets/images/collection-1.jpg')">
                 <h3 class="h4 card-title">Men Collections</h3>
 
-                <a href="#" class="btn btn-secondary">
+                <a href="/index.html" class="btn btn-secondary">
                   <span>Explore All</span>
 
                   <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -301,7 +202,7 @@
               <div class="collection-card" style="background-image: url('./assets/images/collection-2.jpg')">
                 <h3 class="h4 card-title">Women Collections</h3>
 
-                <a href="#" class="btn btn-secondary">
+                <a href="/index.html" class="btn btn-secondary">
                   <span>Explore All</span>
 
                   <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -313,7 +214,7 @@
               <div class="collection-card" style="background-image: url('./assets/images/collection-3.jpg')">
                 <h3 class="h4 card-title">Sports Collections</h3>
 
-                <a href="#" class="btn btn-secondary">
+                <a href="/index.html" class="btn btn-secondary">
                   <span>Explore All</span>
 
                   <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -333,169 +234,384 @@
       <!-- 
         - #PRODUCT
       -->
-
-      <section class="section product">
-        <div class="container">
-
-          <h2 class="h2 section-title">Bestsellers Products</h2>
-
-          <ul class="filter-list">
-
-            <li>
-              <button class="filter-btn  active">All</button>
-            </li>
-
-            <li>
-              <button class="filter-btn">Nike</button>
-            </li>
-
-            <li>
-              <button class="filter-btn">Adidas</button>
-            </li>
-
-            <li>
-              <button class="filter-btn">Puma</button>
-            </li>
-
-            <li>
-              <button class="filter-btn">Bata</button>
-            </li>
-
-            <li>
-              <button class="filter-btn">Asics</button>
-            </li>
-
-          </ul>
-      <!-- 
-        - #CTA
-      -->
-
-      <section class="section cta">
-        <div class="container">
-
-          <ul class="cta-list">
-
-            <li>
-              <div class="cta-card" style="background-image: url('./assets/images/cta-1.jpg')">
-                <p class="card-subtitle">Adidas Shoes</p>
-
-                <h3 class="h2 card-title">The Summer Sale Off 50%</h3>
-
-                <a href="#" class="btn btn-link">
-                  <button>Shop Now</button>
-
-                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-
-            <li>
-              <div class="cta-card" style="background-image: url('./assets/images/cta-2.jpg')">
-                <p class="card-subtitle">Nike Shoes</p>
-
-                <h3 class="h2 card-title">Makes Yourself Keep Sporty</h3>
-
-                <a href="#" class="btn btn-link">
-                  <span>Shop Now</span>
-
-                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
-
-
-
-
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- products -->  <div class="container mt-5">
-    <h2 class="text-center mb-4">Our Shoes</h2>
-    <div class="row">
-      <!-- Shoe Card 1 -->
-      <div class="col-md-4">
-        <div class="card shoe-card">
-          <img src="/assets/images/nike3G.T.+CUT+3+EP.png" class="card-img-top main-shoe" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Nike Running Shoes</h5>
-            <p class="card-text">₹3500</p>
-
-            <!-- Size Options -->
-            <div class="size-options">
-              <!-- Small Square for Sizes -->
-              <div class="size-option" data-size="S" onmouseover="changeShoeImage('Shoe 1', '3500',  '/assets/images/nikeG.T.+CUT+3+EPcol1.png')">
-                <img src="/assets/images/nikeG.T.+CUT+3+EPcol1.png" alt="Size S">
-              </div>
-              <div class="size-option" data-size="M" onmouseover="changeShoeImage('Shoe 1', '3500',  '/assets/images/nikeG.T.+CUT+3+EPcol2.png')">
-                <img src="/assets/images/nikeG.T.+CUT+3+EPcol2.png" alt="Size M">
-              </div>
-              <div class="size-option" data-size="L" onmouseover="changeShoeImage('Shoe 1', '3500',  '/assets/images/nikeG.T.+CUT+3+EPcol3.png')">
-                <img src="/assets/images/nikeG.T.+CUT+3+EPcol3.png" alt="Size L">
-              </div>
-            </div>
-
-            <!-- Size Dropdown -->
-            <select class="form-select size-dropdown" id="sizeDropdown3" onchange="changeShoeImage('shoe3', this.value)">
-              <option value="7">Size 7</option>
-              <option value="8">Size 8</option>
-              <option value="9">Size 9</option>
-              <option value="10">Size 10</option>
-            </select>
-
-
-            <!-- Price & Add to Cart button -->
-            <p class="shoe-price">₹3500</p>
-            <button class="btn btn-primary add-to-cart-btn" onclick="addToCart('Shoe 1', '3500', 'S')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="container mt-5">
-    <h2 class="text-center mb-4">Our Shoes</h2>
+     
+  <div class="container mt-5">
+    <h1 class="text-center">Shoe Collection</h1>
     <div class="row">
 
       <!-- Shoe Card 1 -->
       <div class="col-md-4">
-        <div class="card shoe-card">
-          <img src="/assets/images/AIR+JORDAN+XXXVIII+LOW+PF.png" class="card-img-top main-shoe" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Nike Running Shoes</h5>
-            <p class="card-text">₹3500</p>
+        <div class="product-card">
+          <img id="main-image-1" src="/assets/images/nike3G.T.+CUT+3+EP.png ">
+          <h5>Nike G.T Cut</h5>
+          <p>₹25000</p>
 
-            <!-- Size Options -->
-            <div class="size-options">
-              <!-- Small Square for Sizes -->
-              <div class="size-option" data-size="S" onmouseover="changeShoeImage('Shoe 1', '3500',  '/assets/images/nikeG.T.+CUT+3+EPcol1.png')">
-                <img src="/assets/images/nikeG.T.+CUT+3+EPcol1.png" alt="Size S">
-              </div>
-              <div class="size-option" data-size="M" onmouseover="changeShoeImage('Shoe 1', '3500',  '/assets/images/nikeG.T.+CUT+3+EPcol2.png')">
-                <img src="/assets/images/nikeG.T.+CUT+3+EPcol2.png" alt="Size M">
-              </div>
-              <div class="size-option" data-size="L" onmouseover="changeShoeImage('Shoe 1', '3500',  '/assets/images/nikeG.T.+CUT+3+EPcol3.png')">
-                <img src="/assets/images/nikeG.T.+CUT+3+EPcol3.png" alt="Size L">
-              </div>
-            </div>
-
-            <!-- Size Dropdown -->
-            <select class="form-select size-dropdown" id="sizeDropdown3" onchange="changeShoeImage('shoe3', this.value)">
-              <option value="7">Size 7</option>
-              <option value="8">Size 8</option>
-              <option value="9">Size 9</option>
-              <option value="10">Size 10</option>
-            </select>
-
-
-            <!-- Price & Add to Cart button -->
-            <p class="shoe-price">₹3500</p>
-            <button class="btn btn-primary add-to-cart-btn" onclick="addToCart('Shoe 1', '3500', 'S')">Add to Cart</button>
+          <!-- Color Options -->
+          <div class="color-options">
+            <img src="/assets/images/nike3G.T.+CUT+3+EP.png" alt="Black" onclick="changeImage(1, '/assets/images/nike3G.T.+CUT+3+EP.png')">
+            <img src="/assets/images/nikeG.T.+CUT+3+EPcol1.png" alt="Blue" onclick="changeImage(1, '/assets/images/nikeG.T.+CUT+3+EPcol1.png')">
+            <img src="/assets/images/nikeG.T.+CUT+3+EPcol2.png" alt="Red" onclick="changeImage(1, '/assets/images/nikeG.T.+CUT+3+EPcol2.png')">
           </div>
+
+          <!-- Size Dropdown -->
+          <select class="form-select mt-2" id="size-dropdown-1">
+            <option value="" disabled selected>Select Size</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+
+          <!-- Add to Cart Button -->
+          <button class="btn btn-primary mt-3" onclick="addToCart('Nike G.T Cut', '25000')">Add to Cart</button>
         </div>
       </div>
+
+      <!-- Shoe Card 2 -->
+      <div class="col-md-4">
+        <div class="product-card">
+          <img id="main-image-2" src="/assets/images/fila1.jpg" alt="Shoe 2">
+          <h5>Fila Ultraboost</h5>
+          <p>₹6000</p>
+
+          <!-- Color Options -->
+          <div class="color-options">
+            <img src="/assets/images/fila1.jpg" alt="Gray" onclick="changeImage(2, '/assets/images/fila1.jpg')">
+            <img src="/assets/images/fila2.jpg" alt="White" onclick="changeImage(2, '/assets/images/fila2.jpg')">
+              </div>
+
+          <!-- Size Dropdown -->
+          <select class="form-select mt-2" id="size-dropdown-2">
+            <option value="" disabled selected>Select Size</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+
+          <!-- Add to Cart Button -->
+          <button class="btn btn-primary mt-3" onclick="addToCart('Fila Ultraboost', '6000')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Shoe Card 3 -->
+      <div class="col-md-4">
+        <div class="product-card">
+          <img id="main-image-3" src="/assets/images/c11.webp" alt="Shoe 3">
+          <h5>Campus Runner</h5>
+          <p>₹4500</p>
+
+          <!-- Color Options -->
+          <div class="color-options">
+            <img src="/assets/images/c12.webp" alt="Black" onclick="changeImage(3, '/assets/images/c12.webp')">
+            <img src="/assets/images/c11.webp" alt="Yellow" onclick="changeImage(3, '/assets/images/c11.webp')">
+            <img src="/assets/images/c13.webp" alt="Orange" onclick="changeImage(3, '/assets/images/c13.webp')">
+          </div>
+
+          <!-- Size Dropdown -->
+          <select class="form-select mt-2" id="size-dropdown-3">
+            <option value="" disabled selected>Select Size</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+
+          <!-- Add to Cart Button -->
+          <button class="btn btn-primary mt-3" onclick="addToCart('Campus Runner', '4500')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Shoe Card 4 -->
+      <div class="col-md-4">
+        <div class="product-card">
+          <img id="main-image-4" src="/assets/images/WEEKEND_ERNAVY_L_SKYG8_3_720x.webp" alt="Shoe 4">
+          <h5>Campus Weekender</h5>
+          <p>₹3000</p>
+
+          <!-- Color Options -->
+          <div class="color-options">
+            <img src="/assets/images/WEEKEND_ERNAVY_L_SKYG8_3_720x.webp" alt="Brown" onclick="changeImage(4, '/assets/images/WEEKEND_ERNAVY_L_SKYG8_3_720x.webp')">
+            <img src="/assets/images/WEEKENDER_22G_1246_WHITE_BLK_2_720x.webp" alt="Black" onclick="changeImage(4, '/assets/images/WEEKENDER_22G_1246_WHITE_BLK_2_720x.webp')">
+            <img src="/assets/images/WEEKENDER_22G_1246_WHITE_NAVY_2_720x.webp" alt="Gray" onclick="changeImage(4, '/assets/images/WEEKENDER_22G_1246_WHITE_NAVY_2_720x.webp')">
+          </div>
+
+          <!-- Size Dropdown -->
+          <select class="form-select mt-2" id="size-dropdown-4">
+            <option value="" disabled selected>Select Size</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+
+          <!-- Add to Cart Button -->
+          <button class="btn btn-primary mt-3" onclick="addToCart('Campus Weekender', '3000')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Shoe Card 5 -->
+      <div class="col-md-4">
+        <div class="product-card">
+          <img id="main-image-5" src="/assets/images/cleat1.png" alt="Shoe 5">
+          <h5>Nike Gel</h5>
+          <p>₹8500</p>
+
+          <!-- Color Options -->
+          <div class="color-options">
+            <img src="/assets/images/cleat1.png" alt="Blue" onclick="changeImage(5, '/assets/images/cleat1.png')">
+            <img src="/assets/images/cleat2.png" alt="Purple" onclick="changeImage(5, '/assets/images/cleat2.png')">
+                     </div>
+
+          <!-- Size Dropdown -->
+          <select class="form-select mt-2" id="size-dropdown-5">
+            <option value="" disabled selected>Select Size</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+
+          <!-- Add to Cart Button -->
+          <button class="btn btn-primary mt-3" onclick="addToCart('Nike Gel', '8500')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Shoe Card 6 -->
+<div class="col-md-4">
+  <div class="product-card">
+    <img id="main-image-6" src="/assets/images/bas1.png" alt="Shoe 6">
+    <h5>New Balance Basket'74</h5>
+    <p>₹4000</p>
+
+    <!-- Color Options -->
+    <div class="color-options">
+      <img src="/assets/images/bas1.png" alt="Gray" onclick="changeImage(6, '/assets/images/bas1.png')">
+      <img src="/assets/images/bas2.png" alt="Red" onclick="changeImage(6, '/assets/images/bas2.png')">
+      <img src="/assets/images/bas3.png" alt="White" onclick="changeImage(6, '/assets/images/bas3.png')">
+    </div>
+
+    <!-- Size Dropdown -->
+    <select class="form-select mt-2" id="size-dropdown-6">
+      <option value="" disabled selected>Select Size</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <!-- Add to Cart Button -->
+    <button class="btn btn-primary mt-3" onclick="addToCart('New Balance Basket74', '4000')">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Shoe Card 7 -->
+<div class="col-md-4">
+  <div class="product-card">
+    <img id="main-image-7" src="/assets/images/W+NIKE+DUNK+LOW (1).png" alt="Shoe 7">
+    <h5>Nike Dunk Low</h5>
+    <p>₹17000</p>
+
+    <!-- Color Options -->
+    <div class="color-options">
+      <img src="/assets/images/W+NIKE+DUNK+LOW (1).png" alt="Black" onclick="changeImage(7, '/assets/images/W+NIKE+DUNK+LOW (1).png')">
+      <img src="/assets/images/W+NIKE+DUNK+LOW (2).png" alt="Green" onclick="changeImage(7, '/assets/images/W+NIKE+DUNK+LOW (2).png')">
+      <img src="/assets/images/W+NIKE+DUNK+LOW.png" alt="Blue" onclick="changeImage(7, '/assets/images/W+NIKE+DUNK+LOW.png')">
+    </div>
+
+    <!-- Size Dropdown -->
+    <select class="form-select mt-2" id="size-dropdown-7">
+      <option value="" disabled selected>Select Size</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <!-- Add to Cart Button -->
+    <button class="btn btn-primary mt-3" onclick="addToCart('Nike Dunk Low', '17000')">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Shoe Card 8 -->
+<div class="col-md-4">
+  <div class="product-card">
+    <img id="main-image-8" src="/assets/images/AIR+JORDAN+XXXVIII+LOW+PF.png" alt="Shoe 8">
+    <h5>Nike AIR Jordan XXXVIII</h5>
+    <p>₹35000</p>
+
+    <!-- Color Options -->
+    <div class="color-options">
+      <img src="/assets/images/AIR+JORDAN+XXXVIII+LOW+PF.png" alt="White" onclick="changeImage(8, '/assets/images/AIR+JORDAN+XXXVIII+LOW+PF.png')">
+      <img src="/assets/images/AIR+JORDAN+XXXVIII+LOW+PF (2).png" alt="Black" onclick="changeImage(8, '/assets/images/AIR+JORDAN+XXXVIII+LOW+PF (2).png')">
+      <img src="/assets/images/AIR+JORDAN+XXXVIII+LOW+PF3.jpeg" alt="Pink" onclick="changeImage(8, '/assets/images/AIR+JORDAN+XXXVIII+LOW+PF3.jpeg')">
+    </div>
+
+    <!-- Size Dropdown -->
+    <select class="form-select mt-2" id="size-dropdown-8">
+      <option value="" disabled selected>Select Size</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <!-- Add to Cart Button -->
+    <button class="btn btn-primary mt-3" onclick="addToCart('Nike AIR Jordan XXXVIII', '35000')">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Shoe Card 9 -->
+<div class="col-md-4">
+  <div class="product-card">
+    <img id="main-image-9" src="/assets/images/sg1.jpg" alt="Shoe 9">
+    <h5>SG Cricket Shoes</h5>
+    <p>5000</p>
+
+    <!-- Color Options -->
+    <div class="color-options">
+      <img src="/assets/images/sg1.jpg" alt="Red" onclick="changeImage(9, '/assets/images/sg1.jpg')">
+      <img src="/assets/images/sg2.jpg" alt="Black" onclick="changeImage(9, '/assets/images/sg2.jpg')">
+       </div>
+
+    <!-- Size Dropdown -->
+    <select class="form-select mt-2" id="size-dropdown-9">
+      <option value="" disabled selected>Select Size</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <!-- Add to Cart Button -->
+    <button class="btn btn-primary mt-3" onclick="addToCart('SG Cricket Shoes', '5000')">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Shoe Card 10 -->
+<div class="col-md-4">
+  <div class="product-card">
+    <img id="main-image-10" src="/assets/images/ff1.webp" alt="Shoe 10">
+    <h5>SS Cricket Shoes</h5>
+    <p>₹3500</p>
+
+    <!-- Color Options -->
+    <div class="color-options">
+      <img src="/assets/images/ff1.webp" alt="Black" onclick="changeImage(10, '/assets/images/ff1.webp')">
+      <img src="/assets/images/ss2.webp" alt="White" onclick="changeImage(10, '/assets/images/ss2.webp')">
+      
+    </div>
+
+    <!-- Size Dropdown -->
+    <select class="form-select mt-2" id="size-dropdown-10">
+      <option value="" disabled selected>Select Size</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <!-- Add to Cart Button -->
+    <button class="btn btn-primary mt-3" onclick="addToCart( 'SS Cricket Shoes', '3500')">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Shoe Card 11 -->
+<div class="col-md-4">
+  <div class="product-card">
+    <img id="main-image-11" src="/assets/images/q.webp" alt="Shoe 11">
+    <h5>New Balance FuelCell Rebel </h5>
+    <p>₹13500</p>
+
+    <!-- Color Options -->
+    <div class="color-options">
+      <img src="/assets/images/q.webp" alt="Black" onclick="changeImage(11, '/assets/images/q.webp')">
+      <img src="/assets/images/qq.webp" alt="White" onclick="changeImage(11, '/assets/images/qq.webp')">
+      <img src="/assets/images/qqq.webp" alt="Red" onclick="changeImage(11, '/assets/images/qqq.webp')">
+    </div>
+
+    <!-- Size Dropdown -->
+    <select class="form-select mt-2" id="size-dropdown-11">
+      <option value="" disabled selected>Select Size</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <!-- Add to Cart Button -->
+    <button class="btn btn-primary mt-3" onclick="addToCart( 'New Balance FuelCell Rebel ', '13500')">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Shoe Card 12 -->
+<div class="col-md-4">
+  <div class="product-card">
+    <img id="main-image-12" src="/assets/images/NIKE+SB+VERTEBRAE (2).png" alt="Shoe 12">
+    <h5>Nike Vertebrae</h5>
+    <p>₹18500</p>
+
+    <!-- Color Options -->
+    <div class="color-options">
+      <img src="/assets/images/NIKE+SB+VERTEBRAE (2).png" alt="Black" onclick="changeImage(12, '/assets/images/NIKE+SB+VERTEBRAE (2).png')">
+      <img src="/assets/images/NIKE+SB+VERTEBRAE (4).png" alt="White" onclick="changeImage(12, '/assets/images/NIKE+SB+VERTEBRAE (4).png')">
+      <img src="/assets/images/NIKE+SB+VERTEBRAE3.jpeg" alt="Gray" onclick="changeImage(12, '/assets/images/NIKE+SB+VERTEBRAE3.jpeg')">
+    </div>
+
+    <!-- Size Dropdown -->
+    <select class="form-select mt-2" id="size-dropdown-12">
+      <option value="" disabled selected>Select Size</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <!-- Add to Cart Button -->
+    <button class="btn btn-primary mt-3" onclick="addToCart( 'Nike VERTEBRAE', '18500')">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Shoe Card 13 -->
+<div class="col-md-4">
+  <div class="product-card">
+    <img id="main-image-13" src="/assets/images/nb1.webp" alt="Shoe 13">
+    <h5>New Balance UltraBoost v4</h5>
+    <p>₹11000</p>
+
+    <!-- Color Options -->
+    <div class="color-options">
+      <img src="/assets/images/nb1.webp" alt="Black" onclick="changeImage(13, '/assets/images/nb1.webp')">
+      <img src="/assets/images/nb2.webp" alt="White" onclick="changeImage(13, '/assets/images/nb2.webp')">
+      <img src="/assets/images/nb3.webp" alt="Gray" onclick="changeImage(13, '/assets/images/nb3.webp')">
+    </div>
+
+    <!-- Size Dropdown -->
+    <select class="form-select mt-2" id="size-dropdown-13">
+      <option value="" disabled selected>Select Size</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <!-- Add to Cart Button -->
+    <button class="btn btn-primary mt-3" onclick="addToCart( 'New Balance UltraBoost v4', '11000')">Add to Cart</button>
+  </div>
+</div>
 
       <!-- 
         - #SERVICE
@@ -689,10 +805,6 @@
 
         <div class="footer-brand">
 
-          <a href="#" class="logo">
-            <img src="./assets/im" width="160" height="50" alt="logo">
-          </a>
-
           <ul class="social-list">
 
             <li>
@@ -843,51 +955,167 @@
 
 <!-- JavaScript -->
 <script>
-  // Add to Cart Functionality
+
+ // Function to change the main image when color is selected
+ function changeImage(productId, imageSrc) {
+      document.getElementById(`main-image-${productId}`).src = imageSrc;
+    }
+
+    // Add to Cart Function
+    function addToCart(productId, productName, productPrice) {
+      const size = document.getElementById(`size-dropdown-${productId}`).value;
+      if (!size) {
+        alert(`Please select a size for ${productName}`);
+        return;
+      }
+      alert(`${productName} (Size: ${size}) - ${productPrice} added to the cart.html`);
+    }
+
+
+
+
+    
+  // Add to cart functionality
   document.querySelectorAll('.add-to-cart').forEach(button => {
-      button.addEventListener('click', function () {
-        const productName = this.getAttribute('data-name');
-        const productPrice = this.getAttribute('data-price');
+    button.addEventListener('click', function () {
+      const productName = this.getAttribute('data-name');
+      const productPrice = this.getAttribute('data-price');
 
-        // Retrieve existing cart data from localStorage
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      // Add product to cart array
+      cart.push({ name: productName, price: productPrice });
 
-        // Add new product to the cart
-        cart.push({ name: productName, price: productPrice });
+      // Update cart count
+      document.getElementById('cart-count').textContent = cart.length;
 
-        // Save updated cart back to localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        alert(`${productName} has been added to your cart.`);
-      });
+      alert(`${productName} has been added to your cart.`);
     });
+  });
 
-     // Change the shoe image and price based on the selected size
-     function changeShoeImage(name, price, size, imageUrl) {
-      const shoeImage = document.querySelector('.main-shoe');
-      const shoePrice = document.querySelector('.shoe-price');
-      const shoeName = document.querySelector('.card-title');
-      const addToCartBtn = document.querySelector('.add-to-cart-btn');
+  // Load Cart Data
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cart-items');
 
-      shoeImage.src = imageUrl;
-      shoePrice.textContent = `₹${price}`;
-      shoeName.textContent = `${name} - Size ${size}`;
-      shoePrice.style.display = 'block';
-      addToCartBtn.style.display = 'block';
-
-      // Highlight selected size option
-      const sizeOptions = document.querySelectorAll('.size-option');
-      sizeOptions.forEach(option => {
-        option.classList.remove('selected');
+    // Check if cart is empty and display a message if so
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<tr><td colspan="3" class="text-center">Your cart is empty.</td></tr>';
+    } else {
+      // Loop through cart items and create table rows dynamically
+      cart.forEach((item, index) => {
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${item.name}</td>
+            <td>${item.price}</td>
+          </tr>
+        `;
+        cartItemsContainer.innerHTML += row;
       });
-      document.querySelector(`.size-option[data-size="${size}"]`).classList.add('selected');
     }
 
-    // Add selected item to the cart
-    function addToCart(name, price, size) {
-      // You can use localStorage or an array to save cart items
-      alert(`${name} (Size: ${size}) added to cart at ₹${price}`);
+
+  // Load cart items from localStorage
+  function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItemsContainer = document.getElementById('cart-items');
+      
+      // Clear previous items
+      cartItemsContainer.innerHTML = '';
+
+      // Loop through cart items and display them
+      cart.forEach((product, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+          <div class="row">
+            <div class="col-md-2">
+              <img src="${product.imageUrl}" alt="${product.name}">
+            </div>
+            <div class="col-md-8">
+              <h5>${product.name}</h5>
+              <p>Price: ₹${product.price}</p>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-danger remove-btn" onclick="removeFromCart(${index})">Remove</button>
+            </div>
+          </div>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+      });
     }
+    
+    // Add selected item to the cart
+    function addToCart(name, price, imageUrl) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Create product object
+      const product = { name, price, imageUrl };
+
+      // Add product to the cart
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`${name} added to cart at ₹${price}`);
+    }
+    const addToCartButton = document.getElementById('add-to-cart');
+const sizeSelect = document.getElementById('sizeSelect'); // Get the size select dropdown
+
+// Enable the "Add to Cart" button when a size is selected
+sizeSelect.addEventListener('change', function() {
+  if (sizeSelect.value) {
+    addToCartButton.disabled = false; // Enable the button when a size is selected
+  } else {
+    addToCartButton.disabled = true; // Keep the button disabled if no size is selected
+  }
+});
+
+addToCartButton.addEventListener('click', function() {
+  const selectedSize = sizeSelect.value; // Get the selected size
+
+  if (!selectedSize) {
+    alert('Please select a size before adding to cart!');
+    return; // Don't add to cart if no size is selected
+  }
+
+  const product = {
+    name: 'Running Shoes',
+    price: 50,
+    size: selectedSize, // Add the selected size
+    quantity: 1
+  };
+
+  // Get cart from localStorage or initialize an empty array if not found
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Check if the product is already in the cart (based on name and size)
+  const productIndex = cart.findIndex(item => item.name === product.name && item.size === product.size);
+  if (productIndex !== -1) {
+    alert('This product (size: ' + selectedSize + ') is already in the cart!');
+  } else {
+    // Product is not in the cart, add it and update localStorage
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Product added to cart!');
+    addToCartButton.disabled = true; // Disable the button to prevent re-adding
+  }
+});
+
+  // Add selected item to the cart
+  function addToCart(name, price, imageUrl) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Create product object
+      const product = { name, price, imageUrl };
+
+      // Add product to the cart
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`${name} added to cart at ₹${price}`);
+    }
+
+
+
+    
     </script>
 
 
@@ -897,11 +1125,6 @@
   -->
   <script src="./assets/js/script.js"></script>
 
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 
